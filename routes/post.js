@@ -10,7 +10,7 @@ const Feed = mongoose.model("Feed")
 
 // posts
 router.post('/create-post',
-//             requireAdminLogin, 
+            requireAdminLogin, 
             (req, res) => {
     const {
         companyName, 
@@ -76,7 +76,7 @@ router.get('/properties-details/:id', (req, res) => {
 })
 
 router.delete('/delete-post/:postId', 
-//               requireAdminLogin, 
+              requireAdminLogin, 
               (req, res) => {
     Post.findOne({_id: req.params.postId})
     .populate("postedBy", "_id")
