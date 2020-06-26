@@ -19,9 +19,14 @@ router.post('/create-post',
         typeOfDocument,
         youTubeLink,
         propertyDescription,
-        pic
+        pic,
+        picOne,
+        picTwo,
+        picThree,
+        picFour,
+        picFive
     } = req.body
-    if(!companyName || !propertyName || !propertyLocation || !typeOfDocument || !youTubeLink || !propertyDescription || !pic){
+    if(!companyName || !propertyName || !propertyLocation || !typeOfDocument || !youTubeLink || !propertyDescription || !pic || !picOne || !picTwo || !picThree || !picFour || !picFive){
         return res.status(422).json({error: "Please add all the fields"})
     }
 
@@ -35,6 +40,11 @@ router.post('/create-post',
         youTubeLink,
         propertyDescription,
         photo: pic,
+        photoOne: picOne,
+        photoTwo: picTwo,
+        photoThree: picThree,
+        photoFour: picFour,
+        photoFive: picFive,
         postedBy: req.admin
     })
     post.save().then(result => {
