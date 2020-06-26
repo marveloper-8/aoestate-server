@@ -9,7 +9,9 @@ const Event = mongoose.model("Event")
 const Feed = mongoose.model("Feed")
 
 // posts
-router.post('/create-post', requireAdminLogin, (req, res) => {
+router.post('/create-post',
+//             requireAdminLogin, 
+            (req, res) => {
     const {
         companyName, 
         propertyName, 
@@ -43,7 +45,9 @@ router.post('/create-post', requireAdminLogin, (req, res) => {
     })
 })
 
-router.get('/all-post', requireAdminLogin, (req, res) => {
+router.get('/all-post', 
+//            requireAdminLogin, 
+           (req, res) => {
     Post.find()
         .populate("postedBy", "_id name")
         .populate("comments.postedBy", "_id firstName")
@@ -71,7 +75,9 @@ router.get('/properties-details/:id', (req, res) => {
     })
 })
 
-router.delete('/delete-post/:postId', requireAdminLogin, (req, res) => {
+router.delete('/delete-post/:postId', 
+//               requireAdminLogin, 
+              (req, res) => {
     Post.findOne({_id: req.params.postId})
     .populate("postedBy", "_id")
     .exec((err, post) => {
@@ -116,7 +122,9 @@ router.put('/unlike',requireLogin,(req,res)=>{
     })
 })
 
-router.put('/comment',requireLogin,(req,res)=>{
+router.put('/comment',
+//            requireLogin,
+           (req,res)=>{
     const comment = {
         text:req.body.text,
         postedBy:req.user._id
