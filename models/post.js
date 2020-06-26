@@ -26,10 +26,30 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    photo: {
+    pictureOne: {
         type: String,
         required: true
     },
+    pictureTwo: {
+        type: String,
+        required: true
+    },
+    pictureThree: {
+        type: String,
+        required: false
+    },
+    pictureFour: {
+        type: String,
+        required: false
+    },
+    pictureFive: {
+        type: String,
+        required: false
+    },
+//     photo: {
+//         type: String,
+//         required: true
+//     },
     likes: [
         {
             type: ObjectId,
