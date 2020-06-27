@@ -22,11 +22,35 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    price: {
+        type: String,
+        required: true
+    },
     propertyDescription: {
         type: String,
         required: true
     },
     photo: {
+        type: String,
+        required: true
+    },
+    photoTwo: {
+        type: String,
+        required: true
+    },
+    photoThree: {
+        type: String,
+        required: true
+    },
+    photoFour: {
+        type: String,
+        required: true
+    },
+    photoFive: {
+        type: String,
+        required: true
+    },
+    photoSix: {
         type: String,
         required: true
     },
