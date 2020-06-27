@@ -122,7 +122,8 @@ router.put('/unlike',requireLogin,(req,res)=>{
     })
 })
 
-router.put('/comment', requireLogin, (req,res)=>{
+
+router.put('/comment',requireLogin,(req,res)=>{
     const comment = {
         text:req.body.text,
         postedBy:req.user._id
@@ -132,8 +133,8 @@ router.put('/comment', requireLogin, (req,res)=>{
     },{
         new:true
     })
-    .populate("comments.postedBy","_id email")
-    .populate("postedBy","_id email")
+    .populate("comments.postedBy","_id firstName")
+    .populate("postedBy","_id firstName")
     .exec((err,result)=>{
         if(err){
             return res.status(422).json({error:err})
