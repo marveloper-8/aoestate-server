@@ -122,7 +122,7 @@ router.put('/unlike',requireLogin,(req,res)=>{
     })
 })
 
-router.put('/comment', 
+router.put('/comments', 
            requireLogin, 
            (req,res)=>{
     const comment = {
