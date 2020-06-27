@@ -40,7 +40,14 @@ router.post('/create-post',
         typeOfDocument,
         youTubeLink,
         propertyDescription,
+        price,
         photo: pic,
+        photoOne,
+        photoTwo,
+        photoThree,
+        photoFour,
+        photoFive,
+        photoSix,
         postedBy: req.admin
     })
     post.save().then(result => {
