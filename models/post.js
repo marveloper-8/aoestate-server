@@ -22,6 +22,14 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    brochure: {
+        type: String,
+        required: true
+    },
+    flyers: {
+        type: String,
+        required: true
+    },
     price: {
         type: String,
         required: true
