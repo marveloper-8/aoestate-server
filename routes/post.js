@@ -20,6 +20,8 @@ router.post('/create-post',
         youTubeLink,
         propertyDescription,
         price,
+        brochure,
+        flyers,
         pic,
         photoTwo,
         photoThree,
@@ -27,7 +29,7 @@ router.post('/create-post',
         photoFive,
         photoSix
     } = req.body
-    if(!companyName || !propertyName || !propertyLocation || !typeOfDocument || !youTubeLink || !propertyDescription || !pic || !photoTwo || !photoThree || !photoFour || !photoFive || !photoSix){
+    if(!companyName || !propertyName || !propertyLocation || !typeOfDocument || !youTubeLink || !propertyDescription || !brochure || !flyers || !pic || !photoTwo || !photoThree || !photoFour || !photoFive || !photoSix){
         return res.status(422).json({error: "Please add all the fields"})
     }
 
@@ -40,6 +42,8 @@ router.post('/create-post',
         typeOfDocument,
         youTubeLink,
         propertyDescription,
+        brochure,
+        flyers,
         price,
         photo: pic,
         photoTwo,
