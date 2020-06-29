@@ -174,9 +174,17 @@ router.post('/create-properties', requireAdminLogin, (req, res) => {
         typeOfDocument,
         youTubeLink,
         propertyDescription,
-        pic
+        price,
+        brochure,
+        flyers,
+        pic,
+        photoTwo,
+        photoThree,
+        photoFour,
+        photoFive,
+        photoSix
     } = req.body
-    if(!companyName || !propertyName || !propertyLocation || !typeOfDocument || !youTubeLink || !propertyDescription || !pic){
+    if(!companyName || !propertyName || !propertyLocation || !typeOfDocument || !youTubeLink || !propertyDescription || !brochure || !flyers || !pic || !photoTwo || !photoThree || !photoFour || !photoFive || !photoSix){
         return res.status(422).json({error: "Please add all the fields"})
     }
 
@@ -189,7 +197,15 @@ router.post('/create-properties', requireAdminLogin, (req, res) => {
         typeOfDocument,
         youTubeLink,
         propertyDescription,
+        brochure,
+        flyers,
+        price,
         photo: pic,
+        photoTwo,
+        photoThree,
+        photoFour,
+        photoFive,
+        photoSix,
         postedBy: req.admin
     })
     property.save().then(result => {
@@ -200,7 +216,7 @@ router.post('/create-properties', requireAdminLogin, (req, res) => {
     })
 })
 
-router.get('/all-property', requireAdminLogin, (req, res) => {
+router.get('/all-property', (req, res) => {
     Property.find()
         .populate("postedBy", "_id name")
         .populate("comments.postedBy", "_id firstName")
