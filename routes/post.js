@@ -141,7 +141,7 @@ router.put('/unlike',requireLogin,(req,res)=>{
 
 router.put('/comment',requireLogin,(req,res)=>{
     const comment = {
-        const {textOne, textTwo, textThree} = req.body,
+        const: {textOne, textTwo, textThree} = req.body,
         postedBy:req.user._id
     }
     Post.findByIdAndUpdate(req.body.postId,{
