@@ -22,6 +22,7 @@ require('./models/admin')
 require('./models/post')
 require('./models/events')
 require('./models/feeds')
+require('./models/comment')
 require('./models/property')
 
 app.use(cors())
