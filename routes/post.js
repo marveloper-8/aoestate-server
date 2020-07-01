@@ -7,6 +7,7 @@ const Post = mongoose.model("Post")
 const Property = mongoose.model("Property")
 const Event = mongoose.model("Event")
 const Feed = mongoose.model("Feed")
+const Comment = mongoose.model("Comment")
 
 // posts
 router.post('/create-post',
@@ -157,6 +158,34 @@ router.put('/comment',requireLogin,(req,res)=>{
         }else{
             res.json(result)
         }
+    })
+})
+
+// comment
+router.post('/create-comment', requireLogin, (req, res) => {
+    const {
+        propertyLink, 
+        userLink, 
+        description,
+    } = req.body
+    console.log(propertyLink, userLink, description)
+    if(!propertyLink || !userLink || !description){
+        return res.status(422).json({error: "Please add all the fields"})
+    }
+
+    req.admin.password = undefined
+    
+    const comment = new Comment({
+        propertyLink,
+        userLink,
+        description,
+        postedBy: req.admin
+    })
+    comment.save().then(result => {
+        return res.json({comment: result})
+    })
+    .catch(err => {
+        console.log(err)
     })
 })
 // end of posts
@@ -430,57 +459,6 @@ router.get('/my-dashboard', requireLogin, (req, res) => {
         .catch(err => {
             console.log(err)
         })
-})
-
-router.put('/like', requireLogin, (req, res) => {
-    Post.findByIdAndUpdate(req.body.postId, {
-        $push: {likes: req.user._id}
-    }, {
-        new: true
-    })
-    // .populate("likes", "-id firstName")
-    .exec((err, result) => {
-        if(err){
-            return res.status(422).json({error: err})
-        } else{
-            res.json(result)
-        }
-    })
-})
-
-router.put('/comments',requireLogin,(req,res)=>{
-    const comment = {
-        text:req.body.text,
-        postedBy:req.user._id
-    }
-    Post.findByIdAndUpdate(req.body.postId,{
-        $push:{comments:comment}
-    },{
-        new:true
-    })
-    .populate("comments.postedBy","_id name")
-    .populate("postedBy","_id name")
-    .exec((err,result)=>{
-        if(err){
-            return res.status(422).json({error:err})
-        }else{
-            res.json(result)
-        }
-    })
-})
-
-router.put('/unlike', requireLogin, (req, res) => {
-    Post.findByIdAndUpdate(req.body.postId, {
-        $pull: {likes: req.user._id}
-    }, {
-        new: true
-    }).exec((err, result) => {
-        if(err){
-            return res.status(422).json({error: err})
-        } else{
-            res.json(result)
-        }
-    })
 })
 
 module.exports = router
