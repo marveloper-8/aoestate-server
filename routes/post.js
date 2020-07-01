@@ -188,6 +188,17 @@ router.post('/create-comment', requireLogin, (req, res) => {
         console.log(err)
     })
 })
+
+router.get('/all-comment', requireLogin, (req, res) => {
+    Comment.find()
+        .populate("postedBy", "_id name")
+        .then(comments => {
+            res.json({comments})
+        })
+        .catch(err => {
+            console.log(err)
+        })
+})
 // end of posts
 
 
