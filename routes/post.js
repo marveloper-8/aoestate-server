@@ -280,7 +280,8 @@ router.get('/general-properties-details/:id', (req, res) => {
             res.json({property, properties})
         })
     }).catch(err => {
-        return res.status(404).json({error: "Property not found"})
+//         return res.status(404).json({error: "Property not found"})
+           console.log(err)
     })
 })
 
