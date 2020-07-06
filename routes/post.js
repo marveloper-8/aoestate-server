@@ -271,7 +271,7 @@ router.get('/all-property', (req, res) => {
 router.get('/general-properties-details/:id', (req, res) => {
     Property.findOne({_id: req.params.id})
     .then(property => {
-        Property.find({postId: req.params.id})
+        Property.find({propertyId: req.params.id})
         .populate("postedBy", "_id propertyName")
         .exec((err, properties) => {
             if(err){
@@ -284,8 +284,8 @@ router.get('/general-properties-details/:id', (req, res) => {
     })
 })
 
-router.delete('/delete-property/:postId', requireAdminLogin, (req, res) => {
-    Property.findOne({_id: req.params.postId})
+router.delete('/delete-property/:propertyId', requireAdminLogin, (req, res) => {
+    Property.findOne({_id: req.params.propertyId})
     .populate("postedBy", "_id")
     .exec((err, property) => {
         if(err || !property){
