@@ -271,7 +271,7 @@ router.get('/all-property', (req, res) => {
 router.get('/general-properties-details/:id', (req, res) => {
     Property.findOne({_id: req.params.id})
     .then(property => {
-        Property.find({propertyId: req.params.id})
+        Property.find({generalPropertyId: req.params.id})
         .populate("postedBy", "_id propertyName")
         .exec((err, properties) => {
             if(err){
