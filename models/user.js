@@ -31,7 +31,15 @@ const userSchema = new mongoose.Schema({
     },
     referredBy:{
         type: String,
-        required: true
+        required: false
+    },
+    referredById:{
+        type: String,
+        required: false
+    },
+    referredByEmail:{
+        type: String,
+        required: false
     },
     netWorth:{
         type: String,
