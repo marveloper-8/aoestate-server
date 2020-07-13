@@ -17,10 +17,12 @@ router.post('/signup', (req, res) => {
         bankNumber,
         bankName,
         referredBy,
+        referredById,
+        referredByEmail,
         netWorth,
         password
     } = req.body
-    if(!firstName || !lastName || !email || !phone || !bankAccountName || !bankNumber || !bankName || !referredBy || !password){
+    if(!firstName || !lastName || !email || !phone || !bankAccountName || !bankNumber || !bankName || !referredBy || !referredById || !referredByEmail || !password){
         return res.status(422).json({error: "Please add all the fields"})
     }
     User.findOne({email: email})
@@ -39,6 +41,8 @@ router.post('/signup', (req, res) => {
                         bankNumber,
                         bankName,
                         referredBy,
+                        referredById,
+                        referredByEmail,
                         netWorth,
                         password: hashedPassword,
 
@@ -82,7 +86,9 @@ router.post('/signin', (req, res) => {
                             bankAccountName,
                             bankName,
                             netWorth,
-                            referredBy
+                            referredBy,
+                            referredById,
+                            referredByEmail
                         } = savedUser
                         return res.json({token, user:{
                             _id, 
@@ -93,7 +99,9 @@ router.post('/signin', (req, res) => {
                             bankAccountName,
                             bankName,
                             netWorth,
-                            referredBy
+                            referredBy,
+                            referredById,
+                            referredByEmail
                         }})
                     }
                     else{
