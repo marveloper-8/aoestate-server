@@ -344,7 +344,7 @@ router.post('/create-event', requireAdminLogin, (req, res) => {
     })
 })
 
-router.get('/all-events', requireAdminLogin, (req, res) => {
+router.get('/all-events', (req, res) => {
     Event.find()
         .populate("postedBy", "_id name")
         .then(events => {
@@ -434,7 +434,7 @@ router.get('/all-feeds', requireAdminLogin, (req, res) => {
         })
 })
 
-router.delete('/delete-feed/:feedId', requireAdminLogin, (req, res) => {
+router.delete('/delete-feed/:feedId', (req, res) => {
     Feed.findOne({_id: req.params.feedId})
     .populate("postedBy", "_id")
     .exec((err, feed) => {
