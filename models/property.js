@@ -22,6 +22,18 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    brochure: {
+        type: String,
+        required: true
+    },
+//     flyers: {
+//         type: String,
+//         required: true
+//     },
+    price: {
+        type: String,
+        required: true
+    },
     propertyDescription: {
         type: String,
         required: true
@@ -29,6 +41,26 @@ const postSchema = new mongoose.Schema({
     photo: {
         type: String,
         required: true
+    },
+    photoTwo: {
+        type: String,
+        required: false
+    },
+    photoThree: {
+        type: String,
+        required: false
+    },
+    photoFour: {
+        type: String,
+        required: false
+    },
+    photoFive: {
+        type: String,
+        required: false
+    },
+    photoSix: {
+        type: String,
+        required: false
     },
     likes: [
         {
