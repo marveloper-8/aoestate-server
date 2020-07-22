@@ -26,10 +26,10 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    flyers: {
-        type: String,
-        required: true
-    },
+//     flyers: {
+//         type: String,
+//         required: true
+//     },
     price: {
         type: String,
         required: true
@@ -44,23 +44,23 @@ const postSchema = new mongoose.Schema({
     },
     photoTwo: {
         type: String,
-        required: true
+        required: false
     },
     photoThree: {
         type: String,
-        required: true
+        required: false
     },
     photoFour: {
         type: String,
-        required: true
+        required: false
     },
     photoFive: {
         type: String,
-        required: true
+        required: false
     },
     photoSix: {
         type: String,
-        required: true
+        required: false
     },
     likes: [
         {
