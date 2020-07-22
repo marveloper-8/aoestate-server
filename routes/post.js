@@ -224,7 +224,7 @@ router.post('/create-properties', requireAdminLogin, (req, res) => {
         photoFive,
         photoSix
     } = req.body
-    if(!companyName || !propertyName || !propertyLocation || !typeOfDocument || !youTubeLink || !propertyDescription || !brochure || !flyers || !pic || !photoTwo || !photoThree || !photoFour || !photoFive || !photoSix){
+    if(!companyName || !propertyName || !propertyLocation || !typeOfDocument || !youTubeLink || !propertyDescription || !brochure || !pic){
         return res.status(422).json({error: "Please add all the fields"})
     }
 
